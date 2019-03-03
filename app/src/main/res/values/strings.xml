@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WB_Demo</string>
+    <string name="Main_title">實時監控</string>
+    <string name="Watertemp">水溫</string>
+    <string name="WaterPH">水中pH值</string>
+    <string name="Temp">室溫</string>
+    <string name="Humi">室內溼度</string>
 </resources>
