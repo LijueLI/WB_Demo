@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 datac--;
                 if(datac<0) datac = 3;
-                setData(30, 30);
+                setData(Data.length);
                 switch (datac){
                     case 0:
                         description.setText("最近水溫變化");
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 datac++;
                 if(datac>3) datac=0;
-                setData(30, 30);
+                setData(Data.length);
                 switch (datac){
                     case 0:
                         description.setText("最近水溫變化");
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 while(true) {
                     try {
-                        String url = "https://api.thingspeak.com/channels/700874/feeds.html?results=" + String.valueOf(result);
+                        String url = "https://api.thingspeak.com/channels/700874/feeds.html?timezone=Asia%2FTaipei&results=" + String.valueOf(result);
                         Document document = Jsoup.connect(url).get();
                         Elements elements = document.select("body");
                         String S = elements.text();
@@ -170,11 +170,11 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Watertemp.setText(Data[29].getWatertemp() + "  °C");
-                            pH.setText(Data[29].getPH() + "      ");
-                            Temp.setText(Data[29].getTemp() + "  °C");
-                            Humi.setText(Data[29].getHumi() + "   %");
-                            setData(30, 30);
+                            Watertemp.setText(Data[Data.length-1].getWatertemp() + "  °C");
+                            pH.setText(Data[Data.length-1].getPH() + "      ");
+                            Temp.setText(Data[Data.length-1].getTemp() + "  °C");
+                            Humi.setText(Data[Data.length-1].getHumi() + "   %");
+                            setData(Data.length);
                             lineChart.invalidate();
                             Previous.setEnabled(true);
                             Next.setEnabled(true);
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
-    private void setData(int count, float range) {
+    private void setData(int count) {
 
         ArrayList<Entry> values = new ArrayList<Entry>();
 

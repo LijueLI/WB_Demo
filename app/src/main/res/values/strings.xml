@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">WB_Demo</string>
-    <string name="Main_title">實時監控</string>
+    <string name="app_name">水族箱自動化監測系統</string>
+    <string name="Main_title">即時監控</string>
     <string name="Watertemp">水溫</string>
     <string name="WaterPH">水中pH值</string>
     <string name="Temp">室溫</string>

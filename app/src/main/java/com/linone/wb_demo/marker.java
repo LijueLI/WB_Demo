@@ -30,7 +30,9 @@ public class marker extends MarkerView {
     public void refreshContent(Entry e, Highlight highlight) {
 
         tvContent.setText("" + e.getY());
-        tvDate.setText(""+date[(int)e.getX()]);
+        String[] s = date[(int)e.getX()].split("T");
+        s[1] = s[1].split("\\+")[0];
+        tvDate.setText(""+s[0]+"  "+s[1]);
         // this will perform necessary layouting
         super.refreshContent(e, highlight);
     }
